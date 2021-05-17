@@ -34,6 +34,11 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
+- task: AzureWebAppContainer@1
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise Subscription(699503bc-c2d0-4f4c-986e-daa899f2590f)'
+    appName: 'noteapp2'
+    containers: 'kasemz.azurecr.io/notejam:v1'
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
